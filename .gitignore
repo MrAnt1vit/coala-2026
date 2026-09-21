@@ -1,0 +1,7 @@
+work/
+outputs/
+.DS_Store
+*.o
+*.out
+*.exe
+
