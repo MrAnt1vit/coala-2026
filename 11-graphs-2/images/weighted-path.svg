@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title id="title">Путь с одним тяжёлым ребром и более дешёвый путь из трёх рёбер</title>
+  <desc id="desc">Прямое ребро из 1 в 5 имеет вес 10. Путь 1–3–2–5 имеет веса 2, 1 и 2, общую стоимость 5.</desc>
+  <defs><marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M1 1 L10 5.5 L1 10" fill="none" stroke="#2563eb" stroke-width="2"/></marker></defs>
+  <style>
+    text { font-family: Arial, sans-serif; fill: #172033; }
+    .heading { font-size: 20px; font-weight: 700; }
+    .label { font-size: 17px; }
+    .weight { font-size: 17px; font-weight: 700; text-anchor: middle; }
+    .node-label { fill: white; font-size: 21px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+  <rect width="900" height="360" rx="18" fill="#f8fafc"/>
+  <text x="35" y="42" class="heading">Меньше рёбер ≠ меньше стоимость</text>
+  <path d="M139 125 Q450 30 761 125" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="9 7"/>
+  <text x="450" y="78" class="weight">10</text>
+  <line x1="138" y1="168" x2="320" y2="243" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="380" y1="257" x2="526" y2="257" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="579" y1="244" x2="763" y2="168" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="230" y="191" class="weight">2</text><text x="452" y="245" class="weight">1</text><text x="680" y="191" class="weight">2</text>
+  <circle cx="110" cy="150" r="29" fill="#334155"/><text x="110" y="150" class="node-label">1</text>
+  <circle cx="350" cy="257" r="29" fill="#2563eb"/><text x="350" y="257" class="node-label">3</text>
+  <circle cx="550" cy="257" r="29" fill="#2563eb"/><text x="550" y="257" class="node-label">2</text>
+  <circle cx="790" cy="150" r="29" fill="#334155"/><text x="790" y="150" class="node-label">5</text>
+  <text x="35" y="329" class="label">Прямой путь: 1 ребро, стоимость 10.</text>
+  <text x="488" y="329" class="label">Синий путь: 3 ребра, стоимость 5.</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" role="img" aria-labelledby="title desc">
+  <title id="title">Серые и чёрные вершины при поиске ориентированного цикла</title>
+  <desc id="desc">Слева ребро из третьей вершины в первую серую вершину замыкает текущий путь DFS. Справа ребро в уже завершённую чёрную вершину цикла не образует.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M1 1 L10 5.5 L1 10" fill="none" stroke="#334155" stroke-width="2"/></marker>
+    <marker id="red-arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M1 1 L10 5.5 L1 10" fill="none" stroke="#dc2626" stroke-width="2"/></marker>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #172033; }
+      .heading { font-size: 20px; font-weight: 700; }
+      .label { font-size: 16px; }
+      .node-label { fill: white; font-size: 19px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+      .edge { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#arrow); }
+      .back { fill: none; stroke: #dc2626; stroke-width: 3.5; marker-end: url(#red-arrow); }
+    </style>
+  </defs>
+  <rect width="900" height="330" rx="18" fill="#f8fafc"/>
+  <line x1="450" y1="35" x2="450" y2="295" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="38" y="43" class="heading">Ребро в серую вершину</text>
+  <text x="488" y="43" class="heading">Ребро в чёрную вершину</text>
+
+  <path class="edge" d="M114 140 L229 140"/>
+  <path class="edge" d="M289 150 L342 213"/>
+  <path class="back" d="M337 250 Q170 305 87 183"/>
+  <circle cx="84" cy="140" r="29" fill="#64748b"/><text x="84" y="140" class="node-label">1</text>
+  <circle cx="260" cy="140" r="29" fill="#64748b"/><text x="260" y="140" class="node-label">2</text>
+  <circle cx="358" cy="238" r="29" fill="#64748b"/><text x="358" y="238" class="node-label">3</text>
+  <text x="38" y="307" class="label">1 → 2 → 3 → 1: найден цикл</text>
+
+  <path class="edge" d="M716 139 L804 139"/>
+  <path class="edge" d="M813 165 Q653 237 555 176"/>
+  <circle cx="530" cy="139" r="29" fill="#334155"/><text x="530" y="139" class="node-label">1</text>
+  <circle cx="686" cy="139" r="29" fill="#64748b"/><text x="686" y="139" class="node-label">2</text>
+  <circle cx="836" cy="139" r="29" fill="#64748b"/><text x="836" y="139" class="node-label">3</text>
+  <text x="488" y="260" class="label">Вершина 1 уже завершена.</text>
+  <text x="488" y="287" class="label">Такое ребро не доказывает цикл.</text>
+</svg>
