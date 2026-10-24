@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 235" role="img" aria-labelledby="title desc">
+  <title id="title">Порог связности в задаче «Венеция»</title>
+  <desc id="desc">Два компонента с внутренними мостами высоты 9 и 7 соединены мостом высоты 4. Через четыре года соединение исчезнет.</desc>
+  <rect width="680" height="235" rx="16" fill="#f7fafc"/>
+  <g font-family="Arial, sans-serif" fill="#233244">
+    <text x="24" y="31" font-size="19" font-weight="bold">Последний мост, объединивший компоненты</text>
+    <text x="24" y="55" font-size="14">Добавляем мосты по убыванию высоты: 9 → 7 → 4</text>
+  </g>
+  <g stroke-linecap="round" stroke-width="6">
+    <line x1="110" y1="133" x2="230" y2="133" stroke="#24966b"/>
+    <line x1="450" y1="133" x2="570" y2="133" stroke="#24966b"/>
+    <line x1="230" y1="133" x2="450" y2="133" stroke="#d27437" stroke-dasharray="12 9"/>
+  </g>
+  <g fill="#245a88" stroke="white" stroke-width="3">
+    <circle cx="110" cy="133" r="23"/><circle cx="230" cy="133" r="23"/>
+    <circle cx="450" cy="133" r="23"/><circle cx="570" cy="133" r="23"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g fill="white" font-size="16" font-weight="bold">
+      <text x="110" y="139">A</text><text x="230" y="139">B</text>
+      <text x="450" y="139">C</text><text x="570" y="139">D</text>
+    </g>
+    <g fill="#233244" font-size="15">
+      <text x="170" y="111">h = 9</text><text x="510" y="111">h = 7</text>
+      <text x="340" y="111">h = 4</text>
+      <text x="340" y="193" fill="#9b4f1f">В год 4 этот мост исчезнет</text>
+    </g>
+  </g>
+</svg>

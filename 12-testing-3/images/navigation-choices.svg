@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 260" role="img" aria-labelledby="title desc">
+  <title id="title">Два кратчайших продолжения маршрута</title>
+  <desc id="desc">Из u с расстоянием 2 до цели t можно пойти в v или w с расстоянием 1. Путь Поликарпа идёт через v, но навигатор может выбрать w.</desc>
+  <rect width="680" height="260" rx="16" fill="#f7fafc"/>
+  <g font-family="Arial, sans-serif" fill="#233244">
+    <text x="24" y="32" font-size="19" font-weight="bold">Два допустимых первых шага кратчайшего пути</text>
+    <text x="24" y="56" font-size="14">Путь Поликарпа: u → v → t. Навигатор может предложить u → w → t.</text>
+  </g>
+  <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M170 145 L315 105 L510 145" stroke="#24966b"/>
+    <path d="M170 145 L315 190 L510 145" stroke="#d27437"/>
+  </g>
+  <g fill="#245a88" stroke="white" stroke-width="3">
+    <circle cx="170" cy="145" r="26"/><circle cx="315" cy="105" r="26"/>
+    <circle cx="315" cy="190" r="26"/><circle cx="510" cy="145" r="26"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g fill="white" font-weight="bold" font-size="17">
+      <text x="170" y="151">u</text><text x="315" y="111">v</text>
+      <text x="315" y="196">w</text><text x="510" y="151">t</text>
+    </g>
+    <g fill="#233244" font-size="14">
+      <text x="170" y="198">dist = 2</text><text x="385" y="92">dist = 1</text>
+      <text x="385" y="213">dist = 1</text><text x="510" y="198">dist = 0</text>
+    </g>
+  </g>
+</svg>
