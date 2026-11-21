@@ -1,80 +1,62 @@
-#include <algorithm>
 #include <iostream>
-#include <limits>
+#include <utility>
 #include <vector>
 
 using namespace std;
 
-struct Node {
-    long long maximum;
-    int index;
-};
+vector<int> a;
+vector<int> tree_max;    // максимум на отрезке вершины
+vector<int> tree_index;  // индекс выбранного максимума
 
-Node combine(Node left, Node right) {
-    if (left.maximum != right.maximum) {
-        return left.maximum > right.maximum ? left : right;
+void build(int v, int l, int r) {
+    if (r - l == 1) {
+        tree_max[v] = a[l];
+        tree_index[v] = l;
+        return;
     }
-    if (left.index == -1) return right;
-    if (right.index == -1) return left;
-    return left.index < right.index ? left : right;
+
+    int m = (l + r) / 2;
+    build(2 * v, l, m);
+    build(2 * v + 1, m, r);
+
+    int child = tree_max[2 * v] >= tree_max[2 * v + 1]
+              ? 2 * v : 2 * v + 1;
+    tree_max[v] = tree_max[child];
+    tree_index[v] = tree_index[child];
 }
 
-class MaxIndexTree {
-public:
-    explicit MaxIndexTree(const vector<long long>& values)
-        : size_(static_cast<int>(values.size())), tree_(4 * size_ + 4) {
-        build(1, 0, size_, values);
-    }
+// Возвращает пару: максимальное значение и его индекс.
+pair<int, int> get(int v, int l, int r, int ql, int qr) {
+    if (r <= ql || qr <= l) return {0, -1}; // числа в задаче положительны
+    if (ql <= l && r <= qr) return {tree_max[v], tree_index[v]};
 
-    Node get(int left, int right) const {
-        return get(1, 0, size_, left, right);
-    }
+    int m = (l + r) / 2;
+    pair<int, int> left = get(2 * v, l, m, ql, qr);
+    pair<int, int> right = get(2 * v + 1, m, r, ql, qr);
+    if (left.first >= right.first) return left;
+    return right;
+}
 
-private:
-    int size_;
-    vector<Node> tree_;
-
-    void build(int vertex, int left, int right, const vector<long long>& values) {
-        if (right - left == 1) {
-            tree_[vertex] = {values[left], left};
-            return;
-        }
-        int middle = left + (right - left) / 2;
-        build(vertex * 2, left, middle, values);
-        build(vertex * 2 + 1, middle, right, values);
-        tree_[vertex] = combine(tree_[vertex * 2], tree_[vertex * 2 + 1]);
-    }
-
-    Node get(int vertex, int left, int right,
-             int query_left, int query_right) const {
-        if (query_right <= left || right <= query_left) {
-            return {numeric_limits<long long>::lowest(), -1};
-        }
-        if (query_left <= left && right <= query_right) return tree_[vertex];
-        int middle = left + (right - left) / 2;
-        return combine(get(vertex * 2, left, middle, query_left, query_right),
-                       get(vertex * 2 + 1, middle, right, query_left, query_right));
-    }
-};
-
-// Contest task 2: one-based inclusive bounds in input, one-based indices in output.
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int n;
     cin >> n;
-    vector<long long> values(n);
-    for (auto& value : values) cin >> value;
-    MaxIndexTree tree(values);
+    a.resize(n);
+    for (int& value : a) cin >> value;
 
-    int query_count;
-    cin >> query_count;
-    for (int i = 0; i < query_count; ++i) {
+    tree_max.resize(4 * n + 4);
+    tree_index.resize(4 * n + 4);
+    build(1, 0, n);
+
+    int q;
+    cin >> q;
+    for (int i = 0; i < q; ++i) {
         int left, right;
         cin >> left >> right;
         if (i) cout << ' ';
-        cout << tree.get(left - 1, right).index + 1;
+        cout << get(1, 0, n, left - 1, right).second + 1;
     }
     cout << '\n';
 }

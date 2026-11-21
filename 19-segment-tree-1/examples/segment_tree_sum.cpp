@@ -1,89 +1,69 @@
-#include <cassert>
 #include <iostream>
-#include <string>
 #include <vector>
 
 using namespace std;
 
-// All intervals in the tree are half-open: [left, right).
-class SegmentTreeSum {
-public:
-    explicit SegmentTreeSum(const vector<long long>& values)
-        : size_(static_cast<int>(values.size())), tree_(4 * size_ + 4, 0) {
-        assert(size_ > 0);
-        build(1, 0, size_, values);
+vector<long long> a;
+vector<long long> tree;
+
+// Вершина v отвечает за полуинтервал [l, r).
+void build(int v, int l, int r) {
+    if (r - l == 1) {
+        tree[v] = a[l];
+        return;
     }
 
-    long long sum(int left, int right) const {
-        assert(0 <= left && left <= right && right <= size_);
-        return sum(1, 0, size_, left, right);
+    int m = (l + r) / 2;
+    build(2 * v, l, m);
+    build(2 * v + 1, m, r);
+    tree[v] = tree[2 * v] + tree[2 * v + 1];
+}
+
+// Сумма элементов из пересечения [l, r) и [ql, qr).
+long long get(int v, int l, int r, int ql, int qr) {
+    if (r <= ql || qr <= l) return 0;
+    if (ql <= l && r <= qr) return tree[v];
+
+    int m = (l + r) / 2;
+    return get(2 * v, l, m, ql, qr)
+         + get(2 * v + 1, m, r, ql, qr);
+}
+
+// Присвоить a[index] новое значение и пересчитать его предков.
+void update(int v, int l, int r, int index, long long value) {
+    if (r - l == 1) {
+        tree[v] = value;
+        return;
     }
 
-    void set_value(int index, long long value) {
-        assert(0 <= index && index < size_);
-        set_value(1, 0, size_, index, value);
-    }
+    int m = (l + r) / 2;
+    if (index < m) update(2 * v, l, m, index, value);
+    else update(2 * v + 1, m, r, index, value);
+    tree[v] = tree[2 * v] + tree[2 * v + 1];
+}
 
-private:
-    int size_;
-    vector<long long> tree_;
-
-    void build(int vertex, int left, int right, const vector<long long>& values) {
-        if (right - left == 1) {
-            tree_[vertex] = values[left];
-            return;
-        }
-        int middle = left + (right - left) / 2;
-        build(vertex * 2, left, middle, values);
-        build(vertex * 2 + 1, middle, right, values);
-        tree_[vertex] = tree_[vertex * 2] + tree_[vertex * 2 + 1];
-    }
-
-    long long sum(int vertex, int left, int right,
-                  int query_left, int query_right) const {
-        if (query_right <= left || right <= query_left) return 0;
-        if (query_left <= left && right <= query_right) return tree_[vertex];
-        int middle = left + (right - left) / 2;
-        return sum(vertex * 2, left, middle, query_left, query_right) +
-               sum(vertex * 2 + 1, middle, right, query_left, query_right);
-    }
-
-    void set_value(int vertex, int left, int right,
-                   int index, long long value) {
-        if (right - left == 1) {
-            tree_[vertex] = value;
-            return;
-        }
-        int middle = left + (right - left) / 2;
-        if (index < middle) set_value(vertex * 2, left, middle, index, value);
-        else set_value(vertex * 2 + 1, middle, right, index, value);
-        tree_[vertex] = tree_[vertex * 2] + tree_[vertex * 2 + 1];
-    }
-};
-
-// Contest task 1: initially all zeros; A i x sets a one-based position,
-// Q l r asks for the sum on a one-based inclusive interval.
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int n, q;
     cin >> n >> q;
-    vector<long long> values(n, 0);
-    SegmentTreeSum tree(values);
+    a.assign(n, 0);                // по условию массив изначально нулевой
+    tree.resize(4 * n + 4);
+    build(1, 0, n);
 
     while (q--) {
-        char operation;
-        cin >> operation;
-        if (operation == 'Q') {
-            int left, right;
-            cin >> left >> right;
-            cout << tree.sum(left - 1, right) << '\n';
-        } else if (operation == 'A') {
+        char type;
+        cin >> type;
+        if (type == 'A') {
             int index;
             long long value;
             cin >> index >> value;
-            tree.set_value(index - 1, value);
+            update(1, 0, n, index - 1, value); // из 1-индексации в 0-индексацию
+        } else if (type == 'Q') {
+            int left, right;
+            cin >> left >> right;
+            cout << get(1, 0, n, left - 1, right) << '\n';
         }
     }
 }
