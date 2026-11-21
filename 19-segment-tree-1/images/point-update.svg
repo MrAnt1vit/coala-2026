@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="510" viewBox="0 0 920 510" role="img" aria-labelledby="title desc">
+  <title id="title">Путь изменения элемента с индексом 9 в дереве отрезков</title>
+  <desc id="desc">Значение 5 заменяется на 10 в листе [9,10). Пересчитываются только его предки [8,10), [8,12), [8,16) и корень [0,16). Соседние вершины остаются прежними.</desc>
+  <style>
+    .bg { fill: #fffdf9; }
+    .edge { stroke: #b9c4ce; stroke-width: 2.5; }
+    .active-edge { stroke: #e97324; stroke-width: 4; }
+    .node { fill: #f2f5f8; stroke: #a6b2bd; stroke-width: 2; }
+    .active { fill: #fff1df; stroke: #e97324; stroke-width: 2.5; }
+    .label { font: 17px Arial, sans-serif; fill: #243341; text-anchor: middle; }
+    .value { font: bold 19px Arial, sans-serif; fill: #243341; text-anchor: middle; }
+    .new { fill: #b34d0a; }
+    .hint { font: 16px Arial, sans-serif; fill: #526475; }
+  </style>
+  <rect class="bg" width="920" height="510" rx="18"/>
+  <text x="34" y="35" class="hint">Заменяем a[9] = 5 на 10</text>
+  <rect x="620" y="15" width="25" height="22" rx="5" class="active"/>
+  <text x="655" y="33" class="hint">пересчитываем</text>
+  <rect x="782" y="15" width="25" height="22" rx="5" class="node"/>
+  <text x="817" y="33" class="hint">без изменений</text>
+
+  <line x1="460" y1="106" x2="235" y2="132" class="edge"/>
+  <line x1="460" y1="106" x2="650" y2="132" class="active-edge"/>
+  <line x1="650" y1="204" x2="510" y2="230" class="active-edge"/>
+  <line x1="650" y1="204" x2="788" y2="230" class="edge"/>
+  <line x1="510" y1="302" x2="398" y2="329" class="active-edge"/>
+  <line x1="510" y1="302" x2="633" y2="329" class="edge"/>
+  <line x1="398" y1="401" x2="290" y2="427" class="edge"/>
+  <line x1="398" y1="401" x2="480" y2="427" class="active-edge"/>
+
+  <rect x="375" y="56" width="170" height="50" rx="10" class="active"/>
+  <text x="460" y="78" class="label">[0,16)</text>
+  <text x="460" y="99" class="value new">70 → 75</text>
+
+  <rect x="160" y="132" width="150" height="72" rx="10" class="node"/>
+  <text x="235" y="162" class="label">[0,8)</text>
+  <text x="235" y="187" class="value">31</text>
+  <rect x="565" y="132" width="170" height="72" rx="10" class="active"/>
+  <text x="650" y="162" class="label">[8,16)</text>
+  <text x="650" y="187" class="value new">39 → 44</text>
+
+  <rect x="425" y="230" width="170" height="72" rx="10" class="active"/>
+  <text x="510" y="260" class="label">[8,12)</text>
+  <text x="510" y="285" class="value new">22 → 27</text>
+  <rect x="713" y="230" width="150" height="72" rx="10" class="node"/>
+  <text x="788" y="260" class="label">[12,16)</text>
+  <text x="788" y="285" class="value">17</text>
+
+  <rect x="313" y="329" width="170" height="72" rx="10" class="active"/>
+  <text x="398" y="359" class="label">[8,10)</text>
+  <text x="398" y="384" class="value new">12 → 17</text>
+  <rect x="558" y="329" width="150" height="72" rx="10" class="node"/>
+  <text x="633" y="359" class="label">[10,12)</text>
+  <text x="633" y="384" class="value">10</text>
+
+  <rect x="225" y="427" width="130" height="65" rx="10" class="node"/>
+  <text x="290" y="455" class="label">[8,9)</text>
+  <text x="290" y="478" class="value">7</text>
+  <rect x="395" y="427" width="170" height="65" rx="10" class="active"/>
+  <text x="480" y="455" class="label">[9,10)</text>
+  <text x="480" y="478" class="value new">5 → 10</text>
+</svg>
