@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="390" viewBox="0 0 960 390" role="img" aria-labelledby="title desc">
+  <title id="title">Поиск первого числа не меньше четырёх, начиная с третьей позиции</title>
+  <desc id="desc">Массив 2, 4, 3, 1, 5, 2, 3, 4. Отрезок от третьей позиции до конца. Левый подходящий отрезок имеет максимум 3 и пропускается; найден элемент 5 на пятой позиции.</desc>
+  <rect width="960" height="390" fill="#fffdf8"/>
+  <text x="30" y="39" font-family="Arial, sans-serif" font-size="23" fill="#152b41">get(i = 3, x = 4): ищем первый a[k] ≥ 4 при k ≥ 3</text>
+  <text x="30" y="80" font-family="Arial, sans-serif" font-size="18" fill="#455970">позиция</text>
+  <text x="30" y="123" font-family="Arial, sans-serif" font-size="18" fill="#455970">a[k]</text>
+  <g font-family="Arial, sans-serif" font-size="21" text-anchor="middle">
+    <rect x="150" y="58" width="88" height="86" rx="8" fill="#e9edf1"/><text x="194" y="86">1</text><text x="194" y="123">2</text>
+    <rect x="240" y="58" width="88" height="86" rx="8" fill="#e9edf1"/><text x="284" y="86">2</text><text x="284" y="123">4</text>
+    <rect x="330" y="58" width="88" height="86" rx="8" fill="#e8f0ff"/><text x="374" y="86">3</text><text x="374" y="123">3</text>
+    <rect x="420" y="58" width="88" height="86" rx="8" fill="#e8f0ff"/><text x="464" y="86">4</text><text x="464" y="123">1</text>
+    <rect x="510" y="58" width="88" height="86" rx="8" fill="#d3f1e0" stroke="#19825b" stroke-width="2"/><text x="554" y="86">5</text><text x="554" y="123">5</text>
+    <rect x="600" y="58" width="88" height="86" rx="8" fill="#e8f0ff"/><text x="644" y="86">6</text><text x="644" y="123">2</text>
+    <rect x="690" y="58" width="88" height="86" rx="8" fill="#e8f0ff"/><text x="734" y="86">7</text><text x="734" y="123">3</text>
+    <rect x="780" y="58" width="88" height="86" rx="8" fill="#e8f0ff"/><text x="824" y="86">8</text><text x="824" y="123">4</text>
+  </g>
+  <path d="M330 158v15h538v-15" fill="none" stroke="#3070b8" stroke-width="3"/>
+  <text x="599" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#22578f">область поиска: позиции 3–8</text>
+  <path d="M330 220v15h178v-15" fill="none" stroke="#ab6732" stroke-width="3"/>
+  <text x="419" y="261" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#925423">максимум = 3 &lt; 4 → пропускаем</text>
+  <path d="M510 220v15h358v-15" fill="none" stroke="#19825b" stroke-width="3"/>
+  <text x="689" y="261" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#146b4c">максимум = 5 ≥ 4 → спускаемся</text>
+  <path d="M554 274v35" stroke="#19825b" stroke-width="3" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#19825b"/></marker></defs>
+  <text x="554" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="bold" fill="#146b4c">ответ: позиция 5</text>
+</svg>

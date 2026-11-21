@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="355" viewBox="0 0 900 355" role="img" aria-labelledby="title desc">
+  <title id="title">Как откладывается прибавление на целом отрезке</title>
+  <desc id="desc">На отрезке с числами 3 и 1 максимум 3. После прибавления 100 к обоим числам максимум вершины становится 103, а дети сохраняют прежние значения с отложенными прибавлениями 100. При обращении к ребёнку его значение обновляется.</desc>
+  <rect width="900" height="355" fill="#fffdf8"/>
+  <text x="25" y="40" font-family="Arial, sans-serif" font-size="22" fill="#152b41">Прибавляем 100 к целому отрезку [2,4)</text>
+  <rect x="30" y="77" width="340" height="69" rx="10" fill="#e9edf1"/>
+  <text x="200" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="19">было: max(3, 1) = 3</text>
+  <text x="200" y="131" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#53667a">оба элемента пока известны</text>
+  <path d="M380 110h110" stroke="#3070b8" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="435" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#22578f">+100</text>
+  <rect x="505" y="77" width="360" height="69" rx="10" fill="#d3f1e0" stroke="#19825b" stroke-width="2"/>
+  <text x="685" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="19">стало: максимум = 103</text>
+  <text x="685" y="131" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#146b4c">сама вершина уже актуальна</text>
+  <path d="M607 148L446 204M763 148L665 204" stroke="#19825b" stroke-width="3"/>
+  <rect x="295" y="206" width="260" height="83" rx="10" fill="#e8f0ff"/>
+  <rect x="575" y="206" width="260" height="83" rx="10" fill="#e8f0ff"/>
+  <g text-anchor="middle" font-family="Arial, sans-serif" font-size="18">
+    <text x="425" y="235">левый ребёнок: 3</text><text x="425" y="264" fill="#22578f">pending = +100</text>
+    <text x="705" y="235">правый ребёнок: 1</text><text x="705" y="264" fill="#22578f">pending = +100</text>
+  </g>
+  <text x="450" y="329" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#455970">К детям применим прибавление, только когда к ним понадобится спуститься.</text>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#3070b8"/></marker></defs>
+</svg>
